@@ -28,7 +28,7 @@ function getWebpackConfig (commandParams) {
       filename: 'index.js',
       globalObject: 'typeof self === \'undefined\' ? this : self',
       library: {
-        name: 'Difference',
+        name: 'Serializer',
         type: 'umd',
       },
     },
