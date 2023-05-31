@@ -56,6 +56,14 @@ export function parse(string) {
         j++;
         let depth = 1;
         while (depth !== 0 && arrayContent[j] !== undefined) {
+          if (arrayContent[j] === '"') {
+            j++;
+            if (arrayContent[j] !== '"') {
+              j++;
+              while (!/^[^\\]"$/.test(arrayContent[j - 1] + arrayContent[j])) j++;
+              j++;
+            }
+          }
           if (arrayContent[j] === '[') depth++;
           if (arrayContent[j] === ']') depth--;
           j++;
@@ -75,6 +83,14 @@ export function parse(string) {
         j++;
         let depth = 1;
         while (depth !== 0 && arrayContent[j] !== undefined) {
+          if (arrayContent[j] === '"') {
+            j++;
+            if (arrayContent[j] !== '"') {
+              j++;
+              while (!/^[^\\]"$/.test(arrayContent[j - 1] + arrayContent[j])) j++;
+              j++;
+            }
+          }
           if (arrayContent[j] === '{') depth++;
           if (arrayContent[j] === '}') depth--;
           j++;
@@ -121,9 +137,7 @@ export function parse(string) {
       i = j;
       j++;
       while (!/^\"$/.test(objectContent[j])) {
-        if (/^\\$/.test(objectContent[j])) {
-          j++;
-        }
+        if (/^\\$/.test(objectContent[j])) j++;
         j++;
       }
       j++;
@@ -154,6 +168,14 @@ export function parse(string) {
         j++;
         let depth = 1;
         while (depth !== 0 && objectContent[j] !== undefined) {
+          if (objectContent[j] === '"') {
+            j++;
+            if (objectContent[j] !== '"') {
+              j++;
+              while (!/^[^\\]"$/.test(objectContent[j - 1] + objectContent[j])) j++;
+              j++;
+            }
+          }
           if (objectContent[j] === '[') depth++;
           if (objectContent[j] === ']') depth--;
           j++;
@@ -173,6 +195,14 @@ export function parse(string) {
         j++;
         let depth = 1;
         while (depth !== 0 && objectContent[j] !== undefined) {
+          if (objectContent[j] === '"') {
+            j++;
+            if (objectContent[j] !== '"') {
+              j++;
+              while (!/^[^\\]"$/.test(objectContent[j - 1] + objectContent[j])) j++;
+              j++;
+            }
+          }
           if (objectContent[j] === '{') depth++;
           if (objectContent[j] === '}') depth--;
           j++;
